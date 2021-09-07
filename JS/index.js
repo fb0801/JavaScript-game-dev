@@ -2,6 +2,7 @@
 //import Paddle from "/JS/paddle";
 //import Paddle from "/JS/paddle";
 import Paddle from ".paddle";
+import InputHandler from "input.js";
 //import InputHander from "/js-game-dev/JS/input";
 
 
@@ -16,6 +17,7 @@ const GAME_HEIGHT =600;
 
 let paddle = new Paddle(GAME_WIDTH,GAME_HEIGHT);
 
+new InputHandler();
 
 paddle.draw(ctx);
 
