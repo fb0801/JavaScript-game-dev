@@ -6,7 +6,7 @@ import InputHandler from "/JS/input";
 //import InputHander from "/js-game-dev/JS/input";
 
 import Paddle from "/JS/paddle";
-
+import Brick from "./brick";
 
 export default class Game{
 
@@ -23,10 +23,15 @@ start(){
     this.paddle = new Paddle(this);
     this.ball = new Ball(this);
 
+//let brick = new Brick(this, {x:20, y:20});
+let brick = [];
+for(let i=0;i<10; i++){
+    bricks.push(new Brick(this, {x: i * 52, y: 30}));
 
+}
 
     this.gameObjects=[
-        this.ball,this.paddle
+        this.ball,this.paddle, ...bricks
     ];
 
     new InputHandler(this.paddle);

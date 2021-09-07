@@ -12,7 +12,9 @@
 
 //import Paddle from "/JS/paddle";
 
-import Game from "/JS/Game";
+//import Game from "/JS/Game";
+import Game from "./game";
+
 
 let canvas = document.getElementById("gameScreen");
 
