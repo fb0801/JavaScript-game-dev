@@ -7,7 +7,7 @@ this.height=30;
 
 
     this.position ={
-        x:1,
+        x:game_Width /2 - this.width / 2,
         y:game_Height - this.height - 10,
     }
 
@@ -17,7 +17,7 @@ this.height=30;
 
 draw(ctx){
 
-
+ctx.fillRect(this.position.x, this.position.y, this.width,this.height);
 
 }
 
