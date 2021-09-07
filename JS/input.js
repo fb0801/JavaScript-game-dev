@@ -1,7 +1,9 @@
+//import Paddle from "./paddle";
+
 export default class InputHandler {
 
 
-constructor(){
+constructor(paddle){
 
 document.addEventListener('keydown',event => {
 
@@ -9,13 +11,14 @@ alert(event.keycode);
 
 switch(event.keycode){
 case 37:
-    alert("move left");
+    paddle.moveLeft();
     break;
 
 
 
     case 39:
-        alert('move right');
+        paddle.moveRight();
+        break;
 }
 
 
