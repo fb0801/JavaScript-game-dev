@@ -1,5 +1,8 @@
 //allow us to import classes from other scripts
-import Paddle from 'paddle.js';
+//import Paddle from "/JS/paddle";
+//import Paddle from "/JS/paddle";
+import Paddle from ".paddle";
+//import InputHander from "/js-game-dev/JS/input";
 
 
 let canvas = document.getElementById("gameScreen");
@@ -26,7 +29,7 @@ function gameLoop(timeStamp){
     lastTime = timeStamp;
 
 
-    ctx.clearRect(0,0,800,600);//clear what was previously in that spot
+    ctx.clearRect(0, 0, 800, 600);//clear what was previously in that spot
     paddle.update(deltaTime);
     paddle.draw(ctx);
 
