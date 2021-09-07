@@ -1,5 +1,5 @@
 //allow us to import classes from other scripts
-import Paddle from 'JS/paddle';
+import Paddle from 'paddle.js';
 
 
 let canvas = document.getElementById("gameScreen");
@@ -21,12 +21,19 @@ paddle.draw(ctx);
 let lastTime = 0; //use let as the variable will change
 
 
-function gameLoop(){
+function gameLoop(timeStamp){
+    let deltaTime = timeStamp - lastTime;
+    lastTime = timeStamp;
+
+
     ctx.clearRect(0,0,800,600);//clear what was previously in that spot
-    paddle.update();
+    paddle.update(deltaTime);
+    paddle.draw(ctx);
+
+    requestAnimationFrame(gameLoop);
 }
 
-
+gameLoop();//function call
 
 /*
 ctx.fillStyle="#f00"; //color of shape
