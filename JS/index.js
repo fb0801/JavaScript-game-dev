@@ -1,8 +1,11 @@
 //allow us to import classes from other scripts
 //import Paddle from "/JS/paddle";
 //import Paddle from "/JS/paddle";
-import Paddle from ".paddle";
-import InputHandler from "input.js";
+//import Paddle from "/JS/paddle";
+import {Paddle} from "./paddle.js";
+
+
+import InputHandler from "/JS/input";
 //import InputHander from "/js-game-dev/JS/input";
 
 
