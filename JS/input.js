@@ -25,5 +25,24 @@ case 37:
 });
 
 
+document.addEventListener('keyup',event => {
+
+    alert(event.keycode);
+    
+    switch(event.keycode){
+    case 37:
+        if(paddle.speed < 0) paddle.stop();
+        break;
+    
+    
+    
+        case 39:
+            if(paddle.speed > 0) paddle.stop();
+            break;
+    }
+    
+    
+    });
+
 }
 }

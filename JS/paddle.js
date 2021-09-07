@@ -27,6 +27,10 @@ moveRight(){
     
 }
 
+stop(){
+    this.speed = 0;
+}
+
 draw(ctx){
     ctx.fillStyle="#00f"; //color of shape
 
