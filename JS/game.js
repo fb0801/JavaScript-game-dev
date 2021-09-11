@@ -44,6 +44,9 @@ let bricks = buildLevel(this, level1);
 
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
+
+
+        this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion);
     }
     draw(ctx){
         //this.paddle.draw(ctx);
