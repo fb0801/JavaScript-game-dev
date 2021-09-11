@@ -26,7 +26,7 @@ start(){
     this.ball = new Ball(this);
 
 //let brick = new Brick(this, {x:20, y:20});
-let brick = [];
+let bricks = buildLevel(this, level1); 
 
 
     this.gameObjects=[
