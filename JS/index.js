@@ -21,7 +21,7 @@ const GAME_HEIGHT =600;
 //paddle.draw(ctx);
 
 let game = new Game(GAME_WIDTH,GAME_HEIGHT);
-game.start();
+
 
 let lastTime = 0; //use let as the variable will change
 

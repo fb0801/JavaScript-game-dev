@@ -31,25 +31,24 @@ this.gameWidth = gameWidth;
 this.gameHeight = gameHeight;
 
 
-       
+this.GAMESTATE.MENU;
+
+this.paddle = new Paddle(this);
+this.ball = new Ball(this);
+this.gameObjects = [];
+new InputHandler(this.paddle, this);
+
+
 
     }
 start(){
-
-this.GAMESTATE.RUNNING;
-
-    this.paddle = new Paddle(this);
-    this.ball = new Ball(this);
-
+    if (this.gamestate !== GAMESTATE.MENU) return;
 //let brick = new Brick(this, {x:20, y:20});
 let bricks = buildLevel(this, level1); 
-
-
     this.gameObjects=[
-        this.ball,this.paddle, ...bricks
-    ];
+        this.ball,this.paddle, ...bricks];
 
-    new InputHandler(this.paddle, this);
+        this.gamestate = GAMESTATE.RUNNING;
 }
 
 
@@ -58,7 +57,7 @@ let bricks = buildLevel(this, level1);
         //this.paddle.update(deltaTime);
         //this.ball.update(deltaTime);
 
-        if(this.gamestate ==GAMESTATE.PAUSED) return;
+        if(this.gamestate ===GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU) return;
 
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
@@ -72,7 +71,7 @@ let bricks = buildLevel(this, level1);
 
         this.gameObjects.forEach((object) => object.draw(ctx));
 
-        if (this.gamestate == GAMESTATE.PAUSED){
+        if (this.gamestate === GAMESTATE.PAUSED){
         //to show the screen has been paused
         ctx.rect(0,0, this.gameWidth, this.gameHeight);
         ctx.fillstyle ="rgba(0,0,0,0.5)";
@@ -84,6 +83,20 @@ let bricks = buildLevel(this, level1);
         ctx.fillstyle= "white";
         ctx.textalign = "center";
         ctx.filltext("PAUSED", this.gameWidth / 2, this.gameHeight /2);
+    }
+
+    if (this.gamestate === GAMESTATE.MENU){
+        //to show for menu screen
+        ctx.rect(0,0, this.gameWidth, this.gameHeight);
+        ctx.fillstyle ="rgba(0,0,0,1)";
+        ctx.fill();
+
+
+        //text to show the game menu 
+        ctx.font = "30px Arial";
+        ctx.fillstyle= "white";
+        ctx.textalign = "center";
+        ctx.filltext("Press SPACEBAR to START Game", this.gameWidth / 2, this.gameHeight /2);
     }
 }
 
