@@ -36,6 +36,7 @@ this.GAMESTATE.MENU;
 this.paddle = new Paddle(this);
 this.ball = new Ball(this);
 this.gameObjects = [];
+this.lives =1;
 new InputHandler(this.paddle, this);
 
 
@@ -55,9 +56,12 @@ let bricks = buildLevel(this, level1);
 
     update(deltaTime){
         //this.paddle.update(deltaTime);
-        //this.ball.update(deltaTime);
+        if (this.lives === 0 ) this.gamestate = GAMESTATE.GAMEOVER;
 
-        if(this.gamestate ===GAMESTATE.PAUSED || this.gamestate === GAMESTATE.MENU) return;
+        if(this.gamestate === GAMESTATE.PAUSED || 
+            this.gamestate === GAMESTATE.MENU ||
+            this.gamestate === GAMESTATE.GAMEOVER
+            ) return;
 
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
@@ -97,6 +101,23 @@ let bricks = buildLevel(this, level1);
         ctx.fillstyle= "white";
         ctx.textalign = "center";
         ctx.filltext("Press SPACEBAR to START Game", this.gameWidth / 2, this.gameHeight /2);
+
+        
+        
+        
+        if (this.gamestate === GAMESTATE.GAMEOVER){
+            //to show for menu screen
+            ctx.rect(0,0, this.gameWidth, this.gameHeight);
+            ctx.fillstyle ="rgba(0,0,0,1)";
+            ctx.fill();
+    
+    
+            //text to show the game menu 
+            ctx.font = "30px Arial";
+            ctx.fillstyle= "white";
+            ctx.textalign = "center";
+            ctx.filltext("GAMEOVER", this.gameWidth / 2, this.gameHeight /2);
+        }
     }
 }
 
