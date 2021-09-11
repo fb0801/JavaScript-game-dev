@@ -13,13 +13,14 @@ import {Paddle} from "./paddle.js";
 //-import Brick from "./brick";
 import {Brick} from "./brick.js";
 
-import { buildLevel,level1 } from "./levels.js";
+import { buildLevel,level1,level2 } from "./levels.js";
 
 const GAMESTATE ={
     PAUSED: 0,
     RUNNING:1,
     MENU:2,
-    GAMEOVER: 3
+    GAMEOVER: 3,
+    NEWLEVEL = 4
 
 }
 
@@ -36,18 +37,26 @@ this.GAMESTATE.MENU;
 this.paddle = new Paddle(this);
 this.ball = new Ball(this);
 this.gameObjects = [];
-this.lives =1;
+this.lives =3;
+
+
+this.levels =[level1, level2];
+this.currentLevel=0;
+
+
+
 new InputHandler(this.paddle, this);
 
 
 
     }
 start(){
-    if (this.gamestate !== GAMESTATE.MENU) return;
+    if (this.gamestate !== GAMESTATE.MENU && this.GAMESTATE.NEWLEVEL) return; //||
 //let brick = new Brick(this, {x:20, y:20});
-let bricks = buildLevel(this, level1); 
+this.bricks = buildLevel(this, this.levels[this.currentLevel]); 
     this.gameObjects=[
-        this.ball,this.paddle, ...bricks];
+        this.ball,this.paddle];
+        this.ball.reset();
 
         this.gamestate = GAMESTATE.RUNNING;
 }
@@ -63,17 +72,23 @@ let bricks = buildLevel(this, level1);
             this.gamestate === GAMESTATE.GAMEOVER
             ) return;
 
+                if(this.brick.length ===0){
+                   this.currentLevel++; //increase to the next game level
+                   this.gamestate = GAMESTATE.NEWLEVEL;
+                   this.start();
+                }
 
-        this.gameObjects.forEach((object) => object.update(deltaTime));
+                [...this.gameObjects, ...this.bricks].forEach(object => object.update(deltaTime)
+                );
 
 
-        this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion);
+        this.bricks = this.bricks.filter(brick => !brick.markedForDeletion);
     }
     draw(ctx){
         //this.paddle.draw(ctx);
         //this.ball.draw(ctx);
 
-        this.gameObjects.forEach((object) => object.draw(ctx));
+        [...this.gameObjects, ...this.bricks].forEach((object) => object.draw(ctx));
 
         if (this.gamestate === GAMESTATE.PAUSED){
         //to show the screen has been paused
