@@ -11,7 +11,7 @@ this.gameWidth = game.gameWidth;
 this.gameHeight = game.gameHeight;
 
 
-this.position = {x:10, y:10};
+this.position = {x:10, y:400};
 this.speed = {x:4, y:2};
 this.size = 16;//size of the ball
 

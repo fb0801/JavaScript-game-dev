@@ -1,19 +1,7 @@
 //allow us to import classes from other scripts
-/*import Paddle from "/JS/paddle";*/
-//import {Paddle} from "/JS/paddle";
-//import Paddle from "paddle.js";
-//import {Paddle} from "./paddle.js";
-//import {Paddle} from "/js-game-dev/JS/paddle";
-//import Game from "./game";
-//import Ball from "/js-game-dev/JS/ball";
 
-//import InputHandler from "/JS/input";
-//import InputHander from "/js-game-dev/JS/input";
-
-//import Paddle from "/JS/paddle";
-
-//import Game from "/JS/Game";
-import Game from "./game";
+import Game from "/JS/Game";
+//import {Game} from "./game.js";
 
 
 let canvas = document.getElementById("gameScreen");

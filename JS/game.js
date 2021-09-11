@@ -1,14 +1,19 @@
 //allow us to import classes from other scripts
 
-import Ball from "/JS/ball";
+//import Ball from "/JS/ball";
+import {Ball} from './ball.js';
 
-import InputHandler from "/JS/input";
-//import InputHander from "/js-game-dev/JS/input";
+//import InputHandler from "/JS/input";
+import { InputHandler} from "./input.js";
+import InputHander from "/js-game-dev/JS/input";
 
 import Paddle from "/JS/paddle";
-import Brick from "./brick";
+//import {Paddle} from "./paddle.js";
 
-import { buildLevel,level1 } from "./levels";
+import Brick from "./brick";
+//import {Brick} from "./brick.js";
+
+import { buildLevel,level1 } from "./levels.js";
 
 export default class Game{
 
