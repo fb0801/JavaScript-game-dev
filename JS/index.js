@@ -1,7 +1,7 @@
 //allow us to import classes from other scripts
 
-import Game from "/JS/Game";
-//import {Game} from "./game.js";
+//import Game from "/JS/Game";
+import {Game} from "./game.js";
 
 
 let canvas = document.getElementById("gameScreen");
