@@ -1,8 +1,8 @@
 import Brick from 'JS/brick';
 
 
-export function buildLevel(level){
-    let bricks = []
+export function buildLevel(game, level){
+    let bricks = [];
 
 
     level.forEach((row, rowindex) => {
